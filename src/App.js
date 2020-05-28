@@ -22,7 +22,7 @@ import WelcomeScreen from "./components/WelcomeScreen";
 import PlayerControls from "./components/PlayerControls";
 import SessionPage from "./components/SessionPage";
 
-window.onSpotifyWebPlaybackSDKReady = () => {};
+
 
 class App extends Component {
   render() {
@@ -40,7 +40,7 @@ class App extends Component {
               alt="logo"
             />
             <h2 className="slogan">Music for the people</h2>
-            {/* {this.props.loggedIn && <WebPlayer />}{" "} */}
+            {this.props.loggedIn && <WebPlayer />}{" "}
             {/* the whole app gets a web player */}
           </header>
           <main>
