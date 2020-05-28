@@ -1,8 +1,8 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import path from 'path';
-import apiRoutes from './routes';
-import mongoose from 'mongoose';
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const apiRoutes = require('./routes');
+const mongoose = require('mongoose');
 
 const cors = require('cors');
 
@@ -33,4 +33,4 @@ app.use(express.static(path.join(__dirname, 'public')));
 // can be seen in the terminal window used to run the server.
 app.listen(port, () => console.log(`App server listening on port ${port}!`));
 
-export default app;
+module.exports = app;

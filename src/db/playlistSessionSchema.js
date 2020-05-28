@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
@@ -23,4 +23,6 @@ const playlistSessionSchema = new Schema({
     timestamps: {}
 });
 
-export const PlaylistSession = mongoose.model('PlaylistSession', playlistSessionSchema);
+module.exports = {
+    PlaylistSession: mongoose.model('PlaylistSession', playlistSessionSchema)
+}

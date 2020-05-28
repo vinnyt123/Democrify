@@ -1,7 +1,7 @@
-import express from 'express';
-import { PlaylistSession } from '../src/db/playlistSessionSchema';
-import { Vote } from '../src/db/voteSchema';
-import mongooseCrudify from 'mongoose-crudify';
+const express = require('express');
+const PlaylistSession = require('../src/db/playlistSessionSchema').PlaylistSession;
+const Vote = require('../src/db/voteSchema').Vote;
+const mongooseCrudify = require('mongoose-crudify');
 
 const router = express.Router();
 
@@ -76,4 +76,4 @@ router.post("/getAllUserSessions", async (req, res) => {
     res.json(await query);
 });
 
-export default router
+module.exports = router;

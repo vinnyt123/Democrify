@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
@@ -18,4 +18,6 @@ const voteSchema = new Schema({
     timestamps: {}
 });
 
-export const Vote = mongoose.model('Vote', voteSchema);
+module.exports = {
+    Vote: mongoose.model('Vote', voteSchema)
+}
