@@ -40,7 +40,7 @@ class App extends Component {
               alt="logo"
             />
             <h2 className="slogan">Music for the people</h2>
-            {this.props.loggedIn && <WebPlayer />}{" "}
+            {/* {this.props.loggedIn && <WebPlayer />}{" "} */}
             {/* the whole app gets a web player */}
           </header>
           <main>
