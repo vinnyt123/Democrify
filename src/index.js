@@ -11,8 +11,6 @@ import Notifications from "react-notify-toast";
 import { Button } from "reactstrap";
 import { Redirect } from "react-router-dom";
 
-window.onSpotifyWebPlaybackSDKReady = () => {};
-
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
