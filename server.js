@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const apiRoutes = require('./routes');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const cors = require('cors');
 
@@ -17,6 +18,16 @@ app.use(bodyParser.json({ extended: false }));
 // Setup our routes. These will be served as first priority.
 // Any request to /api will go through these routes.
 app.use('/api', apiRoutes);
+
+// Serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+}
 
 const MONGODB_URI = 'mongodb+srv://vinny:admin@democrify-uqkxf.mongodb.net/test?retryWrites=true&w=majority'
 
