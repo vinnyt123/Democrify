@@ -43,6 +43,12 @@
   .card {
     flex-direction: unset;
   }
+
+  .table {
+    table-layout: auto;
+    width: 100% !important;
+    margin: 0 !important;
+  }
 }
 
 td {
