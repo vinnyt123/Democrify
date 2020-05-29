@@ -12,13 +12,15 @@
 
 .table {
   table-layout: auto;
-  width: 50%;
+  width: 80% !important;
+  margin: 0 !important;
 }
 
 .tableContainer {
   height: 100%;
-  margin-left: 20em;
-  margin-right: 20em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .tableCell {
