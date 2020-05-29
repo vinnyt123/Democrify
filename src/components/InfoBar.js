@@ -116,7 +116,7 @@ class InfoBar extends Component {
             !this.props.session_code && (
               <h3>
                 Code:{" "}
-                <Badge color="secondary">
+                <Badge style={{ backgroundColor: "#1ed760" }}>
                   {this.props.hosted_session.joinCode}
                 </Badge>
               </h3>

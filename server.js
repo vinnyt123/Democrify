@@ -3,12 +3,14 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const apiRoutes = require('./routes');
 const mongoose = require('mongoose');
-
+const forceSsl = require('force-ssl-heroku');
 const cors = require('cors');
 
 // Setup Express
 const app = express();
 app.use(cors());
+//HTTPS for heroku
+app.use(forceSsl);
 const port = process.env.PORT || 5000;
 
 // Setup body-parser
