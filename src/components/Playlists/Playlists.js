@@ -21,11 +21,15 @@ class Playlists extends Component {
     }
 
     if (data) {
+      var bottomMargin = {};
+      if (this.props.nowPlaying) {
+        bottomMargin = {marginBottom: "6em"};
+      }
       return (
         <div>
           <InfoBar title="Top Playlists" backLink='/me' isPlaylistPage={true}> </InfoBar>
           <div className="tableContainer">
-            <Table hover size='sm' className="table">
+            <Table hover size='sm' className="table" style={bottomMargin}>
               <thead>
                 <tr>
                   <th></th>
@@ -53,7 +57,10 @@ class Playlists extends Component {
 function mapStateToProps(state) {
   return {
     playlists: state.playlists,
-    userID: state.user.data ? state.user.data.id : null
+    userID: state.user.data ? state.user.data.id : null,
+    nowPlaying: state.webplayer.playState
+      ? state.webplayer.playState.track_window.current_track
+      : null
   };
 }
 

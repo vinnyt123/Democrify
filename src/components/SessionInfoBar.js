@@ -35,7 +35,7 @@ class SessionInfoBar extends Component {
           <p>Host ID: {this.state.hostID}</p>
           {this.props.code && (
             <h3>
-              Code: <Badge color="secondary">{this.props.code}</Badge>
+              Code: <Badge style={{ backgroundColor: "#1ed760" }}>{this.props.code}</Badge>
             </h3>
           )}
         </Row>

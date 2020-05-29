@@ -33,10 +33,15 @@ class Tracks extends Component {
     }
 
     if (data) {
+      var bottomMargin = {};
+      if (this.props.nowPlaying) {
+        bottomMargin = {marginBottom: "6em"};
+      }
+
       return (
         <div>
           <div className="tableContainer">
-          <Table hover size='sm' className="table">
+          <Table hover size='sm' className="table" style={bottomMargin}>
               <thead>
                 <tr>
                   <th></th>
@@ -70,7 +75,10 @@ function mapStateToProps(state) {
     deviceId: state.webplayer.deviceId,
     activePlaylistTitle: state.playlists.active_playlist.name,
     active_playlist: state.playlists.active_playlist, //The tracks retrieved will be those from the active playlist, which must always be kept up to date
-    session: state.session
+    session: state.session,
+    nowPlaying: state.webplayer.playState
+      ? state.webplayer.playState.track_window.current_track
+      : null
   };
 }
 
