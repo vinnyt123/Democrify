@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { loadPlaylists, createPlaylist } from "../redux/actions/thunk";
-import { Button, Badge, Container, Row, Tooltip } from "reactstrap";
+import { Button, Badge, Container, Row} from "reactstrap";
 
 class SessionInfoBar extends Component {
   constructor(props) {
@@ -31,30 +31,31 @@ class SessionInfoBar extends Component {
       <Container className="stickyContainer" fluid={true}>
         <Row style={{ display: "block" }}>
           {" "}
-          <h1 className="playlistTitle">{this.state.title}</h1>
-          <p>Host ID: {this.state.hostID}</p>
+          <div style={{display: "inline-block", width: "15%", textAlign: "left", paddingLeft: "10px"}}>
+            {!this.state.searchShowing && (
+              <Button style={{backgroundColor: "#c030ed", borderColor: "#c030ed", verticalAlign: "middle"}} tag={Link} to={this.state.backLink}>
+                {"←"}
+              </Button>
+            )}
+          </div>
+          <h1 className="playlistTitle" style={{display: "inline-block", width: "70%", marginRight: "15%", marginBottom: 0, verticalAlign: "middle"}}>{this.state.title}</h1>
+          <p style={{marginBottom: "0.5rem"}}>Host ID: {this.state.hostID}</p>
           {this.props.code && (
             <h3>
-              Code: <Badge style={{ backgroundColor: "#1ed760" }}>{this.props.code}</Badge>
+              Code: <Badge style={{ backgroundColor: "#1ed760", marginBottom: "0.5em"}}>{this.props.code}</Badge>
             </h3>
           )}
         </Row>
-        <Row style={{ margin: "auto", display: "inline" }}>
-          {!this.state.searchShowing && (
-            <Button color="primary" tag={Link} to={this.state.backLink}>
-              {" "}
-              Back{" "}
-            </Button>
-          )}
-        </Row>
+        
         <Button
           disabled={!this.props.can_add}
           className="addButton"
           style={{
             backgroundColor: "#c030ed",
             borderColor: "#c030ed",
-            dsplay: "inline",
+            display: "inline",
             marginBottom: "0px",
+            marginLeft: 0
           }}
           id="Tooltip"
           onClick={this.toggleSearch}
@@ -64,17 +65,6 @@ class SessionInfoBar extends Component {
               ? "Back to the playlist"
               : "Add track"
             : "Cannot add track"}
-          {!this.props.can_add && (
-            <Tooltip
-              placement="right"
-              isOpen={this.state.tooltipOpen}
-              target="Tooltip"
-              toggle={this.toogleTooltip}
-            >
-              You cannot add track this playlist because it is does not belong
-              to the host. Just enjoy the music <span role="img" aria-label="fire emoji">🔥</span>
-            </Tooltip>
-          )}
         </Button>
       </Container>
     );

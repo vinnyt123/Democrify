@@ -9,8 +9,7 @@ import {
   Row,
   Collapse,
   CardBody,
-  Card,
-  Tooltip,
+  Card
 } from "reactstrap";
 import { notify } from "react-notify-toast";
 
@@ -73,36 +72,20 @@ class InfoBar extends Component {
     return (
       <Container className="stickyContainer" fluid={true}>
         <Row style={{ display: "block" }}>
-          {" "}
-          <h1 className="playlistTitle">{this.state.title}</h1>
-          {this.state.isTrackListPage && (
-            <Button
-              disabled={!this.props.can_add}
-              className="addButton"
-              style={{ backgroundColor: "#c030ed", borderColor: "#c030ed" }}
-              onClick={this.toggleSearch}
-              id="Tooltip"
-            >
-              {this.props.can_add
-                ? this.state.searchShowing
-                  ? "Back to the playlist"
-                  : "Add track"
-                : "Cannot add track"}
-              {!this.props.can_add && (
-                <Tooltip
-                  placement="right"
-                  isOpen={this.state.tooltipOpen}
-                  target="Tooltip"
-                  toggle={this.toogleTooltip}
-                >
-                  You cannot add track this playlist because it is not yours.
-                  Ask the owner to create a session for this playlist!
-                </Tooltip>
-              )}
-            </Button>
-          )}
+          <div style={{display: "inline-block", width: "15%", textAlign: "left", paddingLeft: "10px"}}>
+            {!this.state.searchShowing && (
+              <Button
+                style={{backgroundColor: "#c030ed", borderColor: "#c030ed", verticalAlign: "middle"}}
+                tag={Link}
+                to={this.state.backLink}
+              >
+                {"←"}
+              </Button>
+            )}
+          </div>
+          <div style={{paddingBottom: "0.5rem", display: "inline-block", width: "70%", marginRight: "15%", marginBottom: 0}}><h1 className="playlistTitle" style={{verticalAlign: "middle", marginBottom: 0}}>{this.state.title}</h1></div>
           {this.state.isTrackListPage && this.props.session_code && (
-            <h3 style={{ marginBottom: "0.7em" }}>
+            <h3 style={{ marginBottom: "0.5em" }}>
               Code:{" "}
               <Badge style={{ backgroundColor: "#1ed760" }}>
                 {this.props.session_code}
@@ -154,7 +137,7 @@ class InfoBar extends Component {
                 <button
                   className="btn-UpperCreate button button--loginApp-link"
                   onClick={this.togglePop}
-                  style={{ backgroundColor: "#1ed760", color: "white" }}
+                  style={{ backgroundColor: "#1ed760", color: "white", marginBottom: "0.5em" }}
                 >
                   Create Playlist
                 </button>
@@ -192,20 +175,24 @@ class InfoBar extends Component {
               </Card>
             </Collapse>
           )}
-          {!this.state.searchShowing && (
-            <Button
-              style={{
-                backgroundColor: "#c030ed",
-                borderColor: "#c030ed",
-                margin: "auto",
-              }}
-              tag={Link}
-              to={this.state.backLink}
-            >
-              Back
-            </Button>
-          )}
         </Row>
+        {this.state.isTrackListPage && (
+              <Button
+                disabled={!this.props.can_add}
+                className="addButton"
+                style={{ backgroundColor: "#c030ed", borderColor: "#c030ed", margin: 0 }}
+                onClick={this.toggleSearch}
+                id="Tooltip"
+              >
+                {this.props.can_add
+                  ? this.state.searchShowing
+                    ? "Back to the playlist"
+                    : "Add track"
+                  : "Cannot add track"}
+                
+              </Button>
+          )
+          }
       </Container>
     );
   }
